@@ -1,0 +1,40 @@
+/* class Solution {
+    public int maxArea(int[] height) {
+        int a=0,max=0;
+        for(int i=0;i<height.length;i++)
+        {
+            for(int j=i+1;j<height.length;j++)
+            {
+                a=Math.min(height[i],height[j])*(j-i);
+                if(a>max)
+                max=a;
+            }
+        }
+return max;
+    }
+}	
+//this method has O(n*n) time complexity and would exceed time limit for large dataset 
+*/
+
+//use two pointers as it is O(n) so much more efficient. also hint of greedy algo
+import java.util.Scanner;
+class Solution {
+    public int maxArea(int[] height) {
+        int a=0,max=0,i=0,min=0,j=height.length-1;
+      
+            while(i<j)
+            {
+			min=Math.min(height[i],height[j]);
+                     	a=min*(j-i);
+                	if(a>max)
+                	max=a;
+			if(height[i]<height[j])
+			i++;
+			else
+			j--;
+			
+      
+	    }
+        return max;
+    }
+}
