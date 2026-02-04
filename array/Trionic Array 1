@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+class Solution 
+{
+    public boolean isTrionic(int[] nums) 
+    {
+        int n=nums.length;
+        int i=0,j=i+1,c=0,a=0;
+        if(n<4 || nums[0]>=nums[1])
+        return false;
+        while(j<n)
+        { 
+            if(nums[i]==nums[j])
+            return false;
+            switch(c)
+            {
+            case 0: 
+                      
+                    if(nums[i]>nums[j])
+                    {
+                    c++;
+                    }
+            break;
+
+            case 1:
+                    
+                    if(nums[i]<nums[j])
+                    {
+                    c++;
+                    a++;
+                    }
+            break;
+
+            default:
+            
+                   if(nums[i]<nums[j])
+                   a++;
+                   if(nums[i]>nums[j]) 
+                   return false;
+                    
+            break;
+            
+            }
+           i++;
+           j++;
+        }
+        if(c==2 && a>0)
+        return true;
+        else
+        return false;
+    
+    }
+}
