@@ -1,0 +1,29 @@
+class Solution 
+{
+    public int[] constructTransformedArray(int[] nums) 
+    {
+        int n=nums.length;
+        int result[]=new int[n];
+        if(n==0)
+        return result;
+        int step=0,d;
+        for(int i=0;i<n;i++)
+        {
+            step=nums[i];
+            if(nums[i]>0 || nums[i]<0)
+            {
+                d=(i+step)%n; 
+                if (d < 0) 
+                {
+                d += n; 
+                }
+                result[i]=nums[d];  
+            }
+            else
+            {
+                result[i]=nums[i];
+            }
+        }
+        return result;
+    }
+}
