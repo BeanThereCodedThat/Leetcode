@@ -3,7 +3,7 @@ class Solution {
         if (nums.length == 0)
         return 0;
         int i = 0;
-        for (int j = 1; j < nums.length; j++) {
+        for (int j = 1; j < nums.length; j++) {    // this only works because the array is sorted. it wont work any other any way
             if (nums[j] != nums[i]) {
                 i++;
                 nums[i] = nums[j]; // overwrite duplicate
