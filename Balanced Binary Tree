@@ -1,0 +1,28 @@
+class Solution {
+    public boolean isBalanced(TreeNode root) {
+        // If checkHeight returns -1, it means the tree is unbalanced
+        return checkHeight(root) != -1;
+    }
+
+    private int checkHeight(TreeNode node) {
+        if (node == null) {
+            return 0; // Base case: height of null is 0
+        }
+
+        // 1. Check left subtree
+        int leftHeight = checkHeight(node.left);
+        if (leftHeight == -1) return -1; // Propagate the "unbalanced" signal
+
+        // 2. Check right subtree
+        int rightHeight = checkHeight(node.right);
+        if (rightHeight == -1) return -1;
+
+        // 3. Check current node balance: |left - right| <= 1
+        if (Math.abs(leftHeight - rightHeight) > 1) {
+            return -1;
+        }
+
+        // 4. Return actual height to the parent
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+}
